@@ -2,3 +2,6 @@
 venv/
 __pycache__
 db.sqlite3
+db.json
+restaurant_kitchen_servise_data.json
+data_base.json

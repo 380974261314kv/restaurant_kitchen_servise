@@ -25,7 +25,7 @@ class Dish(models.Model):
     )
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["id"]
         verbose_name_plural = "dishes"
 
     def __str__(self):

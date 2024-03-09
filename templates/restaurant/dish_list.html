@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>All dishes</h1>
+{% if dish_list %}
+<table class="table mt-5 table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Dish type</th>
+            <th>Cook</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dish in dish_list %}
+        <tr>
+            <td>{{ dish.name }}</td>
+            <td>{{ dish.price}}</td>
+            <td>{{ dish.dish_type }}</td>
+            <td>{% for cook in dish.cooks.all %}{% if cook.first_name %}
+                {{ cook.first_name }} {{ cook.last_name }}|{% else %}{{ cook.username }}
+                {% endif %}{% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>There are no dishes</p>
+{% endif %}
+
+{% endblock %}

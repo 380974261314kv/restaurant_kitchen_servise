@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if dish_type_list %}
+<table class="table table-bordered table-hover shadow-lg bg-white mt-5">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dish_type in dish_type_list %}
+        <tr>
+            <td>{{ dish_type.id }}</td>
+            <td>{{ dish_type.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>There are no dish types </p>
+{% endif %}
+
+{% endblock %}

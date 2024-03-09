@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %} 
+<h1>Cook list</h1>
+{% if cook_list %}
+
+<table class="table mt-5 table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Full name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Work experience</th>
+            {% for cook in cook_list %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{ cook.first_name }} {{ cook.last_name }}
+            </td>
+            <td>
+                {{ cook.username }}
+            </td>
+            <td>
+                {{ cook.email}}
+            </td>
+            <td>
+                {{ cook.years_of_experience}} year{{ cook.years_of_experience | pluralize }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>There are no cooks</p>
+{% endif %}
+{% endblock %}
