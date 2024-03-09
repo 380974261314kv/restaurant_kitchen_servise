@@ -14,11 +14,13 @@
     <tbody>
         {% for dish in dish_list %}
         <tr>
-            <td>{{ dish.name }}</td>
+            <td>
+                <a href="{% url 'restaurant:dish-detail' dish.id %}">{{ dish.name }}</a>
+            </td>
             <td>{{ dish.price}}</td>
             <td>{{ dish.dish_type }}</td>
             <td>{% for cook in dish.cooks.all %}{% if cook.first_name %}
-                {{ cook.first_name }} {{ cook.last_name }}|{% else %}{{ cook.username }}
+                {{ cook.first_name }} {{ cook.last_name }} {% else %}{{ cook.username }}
                 {% endif %}{% endfor %}
             </td>
         </tr>
@@ -28,5 +30,9 @@
 {% else %}
 <p>There are no dishes</p>
 {% endif %}
+<div class="make-dish">
+<p >Make a new dish</p>
+<a href="#">Nake</a>
+</div>
 
 {% endblock %}

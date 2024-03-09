@@ -16,10 +16,13 @@
     <tbody>
         <tr>
             <td>
-                {{ cook.first_name }} {{ cook.last_name }}
+                <a href="{% url 'restaurant:cook-detail' cook.id %}">{{ cook.first_name }} {{ cook.last_name }}</a>
+                
             </td>
             <td>
                 {{ cook.username }}
+       {% if user == cook %} <b>(Me)</b>{% endif%}
+
             </td>
             <td>
                 {{ cook.email}}
@@ -34,4 +37,5 @@
 {% else %}
 <p>There are no cooks</p>
 {% endif %}
+ <a href="#" class="card-link">Add new profile</a><br>
 {% endblock %}

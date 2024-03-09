@@ -26,7 +26,11 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class DishListView(generic.ListView):
     model = Dish
-    paginate_by = 13
+    paginate_by = 5
+    
+    
+class DishDetailView(generic.DetailView):
+    model = Dish
     
     
 class DishTypeListView(generic.ListView):
@@ -36,6 +40,17 @@ class DishTypeListView(generic.ListView):
     paginate_by = 5
     
     
+class DishTypeDetailView(generic.DetailView):
+    model = DishType
+    context_object_name = "dish_type"
+    template_name = "restaurant/dish_type_detail.html"
+    paginate_by = 5
+    
+    
 class CookListView(generic.ListView):
     model = Cook
     paginate_by = 5
+    
+    
+class CookDetailView(generic.DetailView):
+    model = Cook

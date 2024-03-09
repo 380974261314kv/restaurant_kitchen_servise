@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ dish_type.name }}</h5>
+    <p class="card-text">All dishes belonging to this dish type</p>
+    {% for dish in dish_type.dish_set.all %}
+    <b>
+        <a href="{% url 'restaurant:dish-detail' dish.id %}">{{ dish.name }}</a>
+    </b><br>
+    
+    {% empty %}
+    <p>There are no dishes</p>
+    {% endfor %}
+    <a href="#" class="btn btn-primary">Update</a>
+    <a href="#" class="btn btn-primary">Delete</a>
+  </div>
+</div>
+{% endblock %}
