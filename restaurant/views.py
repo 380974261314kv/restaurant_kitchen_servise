@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.views import generic
+from django.urls import reverse_lazy
 
 from restaurant.models import Cook, Dish, DishType
 
@@ -33,6 +34,18 @@ class DishDetailView(generic.DetailView):
     model = Dish
     
     
+class DishCreateView(generic.CreateView):
+    model = Dish
+    fields = "__all__"
+    success_url = reverse_lazy("restaurant:dish-list")
+    
+    
+class DishUpdateView(generic.UpdateView):
+    model = Dish
+    fields = "__all__"
+    success_url = reverse_lazy("restaurant:dish-list")
+    
+    
 class DishTypeListView(generic.ListView):
     model = DishType
     template_name = "restaurant/dish_type_list.html"
@@ -47,6 +60,20 @@ class DishTypeDetailView(generic.DetailView):
     paginate_by = 5
     
     
+class DishTypeCreateView(generic.CreateView):
+    model = DishType
+    fields = "__all__"
+    template_name = "restaurant/dish_type_form.html"
+    success_url = reverse_lazy("restaurant:dish-type-list")
+    
+    
+class DishTypeUpdateView(generic.UpdateView):
+    model = DishType
+    fields = "__all__"
+    template_name = "restaurant/dish_type_form.html"
+    success_url = reverse_lazy("restaurant:dish-type-list")
+    
+    
 class CookListView(generic.ListView):
     model = Cook
     paginate_by = 2
@@ -54,3 +81,15 @@ class CookListView(generic.ListView):
     
 class CookDetailView(generic.DetailView):
     model = Cook
+    
+    
+class CookCreateView(generic.CreateView):
+    model = Cook
+    fields = ("username", "first_name", "last_name", "password", "email", "years_of_experience")
+    success_url = reverse_lazy("restaurant:cook-list")
+    
+    
+class CookUpdateView(generic.UpdateView):
+    model = Cook
+    fields = ("username", "first_name", "last_name", "password", "email", "years_of_experience")
+    success_url = reverse_lazy("restaurant:cook-list")
