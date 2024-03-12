@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1 class="make-dish">All Dish Types</h1>
 {% if dish_type_list %}
 <table class="table table-bordered table-hover shadow-lg bg-white mt-5">
     <thead>
@@ -23,5 +24,9 @@
 {% else %}
 <p>There are no dish types </p>
 {% endif %}
+<div class="make-dish">
+<p >Create a new dish type</p>
+<a href="{% url 'restaurant:dish-type-create' %}" class="btn btn-secondary link-to-page btn-lg">Create</a>
+</div>
 
 {% endblock %}
